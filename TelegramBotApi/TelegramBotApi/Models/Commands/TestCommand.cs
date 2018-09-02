@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot;
+
 using static Telegram.Bot.Types.Enums.MessageType;
 using static Telegram.Bot.Types.Enums.ParseMode;
 
@@ -18,6 +19,7 @@ namespace TelegramBotApi.Models.Commands
             return false;
         }
 
-        public override async Task Execute(Message message, TelegramBotClient botClient) => await botClient.SendTextMessageAsync(message.Chat.Id, "Hallo I'm ASP.NET Core Bot", parseMode: Markdown);
+        public override async Task Execute(Message message, TelegramBotClient botClient) =>
+            await botClient.SendTextMessageAsync(message.Chat.Id, "Hallo I'm ASP.NET Core Bot", parseMode: Markdown);
     }
 }

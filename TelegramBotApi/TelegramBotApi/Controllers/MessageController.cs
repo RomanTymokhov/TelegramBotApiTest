@@ -25,15 +25,13 @@ namespace TelegramBotApi.Controllers
         {
             if (update == null) return Ok();
 
-            var commands = Bot.Commands;
-            var message = update.Message;
             var botClient = await Bot.GetBotClientAsync();
 
-            foreach (var command in commands)
+            foreach (var command in Bot.Commands)
             {
-                if (command.Contains(message))
+                if (command.Contains(update.Message))
                 {
-                    await command.Execute(message, botClient);
+                    await command.Execute(update.Message, botClient);
                     break;
                 }
             }

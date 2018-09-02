@@ -21,13 +21,14 @@ namespace TelegramBotApi.Models
                 return botClient;
             }
 
-            commandsList = new List<Command>();
-            commandsList.Add(new TestCommand());
-            //TODO: Add more commands
+            commandsList = new List<Command>
+            {
+                new TestCommand()
+                //TODO: Add more commands
+            };
 
             botClient = new TelegramBotClient(BotSettings.Key);
-            string hook = string.Format(BotSettings.Url, "api/message/update");
-            await botClient.SetWebhookAsync(hook);
+            await botClient.SetWebhookAsync(string.Format(BotSettings.Url, "api/message/update"));
             return botClient;
         }
     }
